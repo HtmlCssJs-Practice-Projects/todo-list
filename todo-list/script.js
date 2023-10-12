@@ -1,6 +1,23 @@
 const inputBox = document.getElementById("input-box")
 const listContainer = document.getElementById("list-container")
 
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        if (inputBox.value === "") {
+            alert("Empty!")
+        } else {
+            let li = document.createElement('li')
+            li.innerHTML = inputBox.value;
+            listContainer.appendChild(li)
+            let span = document.createElement('span')
+            span.innerHTML = '\u00d7'
+            li.appendChild(span)
+        }
+        inputBox.value = ""
+        saveData()
+    }
+})
+
 function addTask() {
     if (inputBox.value === "") {
         alert("Empty!")
